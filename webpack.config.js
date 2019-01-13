@@ -14,12 +14,9 @@ module.exports = {
 
     // output file(s) and chunks
     output: {
-        library: 'UserList',
-        libraryTarget: 'umd',
-        libraryExport: 'default',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js',
-        publicPath: config.get('publicPath')
+        filename: 'main.js',
+        publicPath: '/'
     },
 
     // module/loaders configuration
