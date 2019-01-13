@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, NavLink as Link, Route } from 'react-router-dom';
-
+import AsyncContactComponent from './AsyncContactComponent';
 import './styles.scss';
+
+import( './async.js' ).then( ( data ) => {
+    console.log( data );
+} );
 
 // home route component
 const HomeComponent = ( props ) => {
@@ -15,13 +19,6 @@ const HomeComponent = ( props ) => {
 const AboutComponent = ( props ) => {
     return (
         <h1>About Component!</h1>
-    );
-}
-
-// contact route component
-const ContactComponent = ( props ) => {
-    return (
-        <h1>Contact Component!</h1>
     );
 }
 
@@ -44,7 +41,9 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={ HomeComponent } />
                         <Route path="/about" component={ AboutComponent } />
-                        <Route path="/contact" component={ ContactComponent } />
+                        <Route path="/contact" render={ 
+                        ( props ) => <AsyncContactComponent { ...props } value="1" />
+                        } />
                     </Switch>
                 </div>
             </BrowserRouter>
