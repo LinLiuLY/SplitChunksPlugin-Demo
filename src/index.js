@@ -2,25 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, NavLink as Link, Route } from 'react-router-dom';
 import AsyncContactComponent from './AsyncContactComponent';
+import AsyncHomeComponent from './AsyncHomeComponent';
+import AsyncAboutComponent from './AsyncAboutComponent';
 import './styles.scss';
 
 import( './async.js' ).then( ( data ) => {
     console.log( data );
 } );
-
-// home route component
-const HomeComponent = ( props ) => {
-    return (
-        <h1>Home Component!</h1>
-    );
-}
-
-// about route component
-const AboutComponent = ( props ) => {
-    return (
-        <h1>About Component!</h1>
-    );
-}
 
 // create sample App component
 class App extends React.Component {
@@ -39,8 +27,8 @@ class App extends React.Component {
                     </div>
                     
                     <Switch>
-                        <Route exact path="/" component={ HomeComponent } />
-                        <Route path="/about" component={ AboutComponent } />
+                        <Route exact path="/" component={ AsyncHomeComponent } />
+                        <Route path="/about" component={ AsyncAboutComponent } />
                         <Route path="/contact" render={ 
                         ( props ) => <AsyncContactComponent { ...props } value="1" />
                         } />
