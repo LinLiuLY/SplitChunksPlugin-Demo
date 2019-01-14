@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('config');
 
 /*-------------------------------------------------*/
@@ -85,7 +86,8 @@ module.exports = {
                 )
                 .join("_");
         }),
-        new webpack.HashedModuleIdsPlugin()
+        new webpack.HashedModuleIdsPlugin(),
+        new BundleAnalyzerPlugin()
     ],
 
     // development server configuration
